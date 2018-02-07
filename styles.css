@@ -1,0 +1,35 @@
+@media (min-width: 992px) { 
+    .container {
+      max-width: 900px;
+    }
+  }
+  
+
+.mslink{
+    height: 50px;
+    margin: 10px 0px;
+}
+
+.playlink{
+    height: 70px;
+}
+
+.ludo-bg{
+    /* The image used */
+    background-image: url("/media/ludobackdrop.jpg");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.screenshot{
+    padding-top: 40px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
