@@ -18,18 +18,16 @@
     <link href="styles.css" rel="stylesheet">
   </head>
   <body>
-    <main role="main">
-      <section class="text-center">
-        <div class="container">
-          <img src="logo.png" class="img-fluid" alt="Jolly Code">
-          <p>
-            <a href="https://www.microsoft.com/en-us/search/result.aspx?q=jolly+code&form=apps&search=#nav-apps" class="btn btn-secondary my-2">Microsoft Store</a>
-            <a href="https://play.google.com/store/apps/developer?id=Jolly+Code" class="btn btn-secondary my-2">Google Play</a>
-          </p>
-        </div>
-      </section>
+      <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom">
+        <img src="logo.png" class="img-fluid my-0 mr-md-auto font-weight-normal logo" alt="Jolly Code">
 
-      <div class="position-relative overflow-hidden p-3 p-md-5 text-center bg-light ludo-bg">
+        <nav class="my-2 my-md-0 mr-md-3">
+          <a class="p-2 text-dark" href="https://www.microsoft.com/en-us/search/result.aspx?q=jolly+code&form=apps&search=#nav-apps" class="btn btn-secondary my-2">Microsoft Store</a>
+          <a class="p-2 text-dark" href="https://play.google.com/store/apps/developer?id=Jolly+Code" class="btn btn-secondary my-2">Google Play</a>
+        </nav>
+      </div>
+
+      <div class="position-relative overflow-hidden p-3 p-md-5 text-center bg-light ludo-bg box-shadow">
         <div class="col-md-5 p-lg-5 mx-auto my-5">
           <h1 class="display-4 font-weight-normal">Ludo Master</h1>
           <p class="lead font-weight-normal">The classic game of ludo for your phone and PC. Play against friends or computer opponents. Ludo Master is easy to learn, easy to play, fun, and free!</p>
@@ -50,6 +48,7 @@
             </div>
           </div>
         </div>
+        
         <div class="product-device box-shadow d-none d-md-block">
           <img src="/media/ludo1.jpg" class="img-fluid screenshot">
         </div>
@@ -58,9 +57,11 @@
         </div>
       </div>
 
-      <div class="album py-5 bg-light">
+      <main role="main">
+        <div class="album py-5 bg-light">
           <div class="container">
-  
+            <h1 class="display-6 font-weight-light mb-4 text-muted">Other Apps</h1>
+
             <div class="row">
               <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
@@ -90,20 +91,6 @@
               </div>
               <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
-                  <img class="card-img-top" src="/apps/buston.png" alt="Buston">
-                  <div class="card-body">
-                    <p class="card-text">Buston</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div class="btn-group">
-                        <a href="https://www.microsoft.com/en-us/store/p/buston/9wzdncrdkc38" class="btn btn-sm btn-outline-secondary">Download</a>
-                        <a href="buston.html" class="btn btn-sm btn-outline-secondary">Privacy Policy</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card mb-4 box-shadow">
                   <img class="card-img-top" src="/apps/njrail.png" alt="New Jersey Rail">
                   <div class="card-body">
                     <p class="card-text">New Jersey Rail</p>
@@ -111,6 +98,20 @@
                       <div class="btn-group">
                         <a href="https://www.microsoft.com/store/apps/9P989LN846GL" class="btn btn-sm btn-outline-secondary">Microsoft Store</a>
                         <a href="https://play.google.com/store/apps/details?id=net.JollyCode.NJTransit" class="btn btn-sm btn-outline-secondary">Google Play</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="/apps/buston.png" alt="Buston">
+                  <div class="card-body">
+                    <p class="card-text">Buston</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="https://www.microsoft.com/en-us/store/p/buston/9wzdncrdkc38" class="btn btn-sm btn-outline-secondary">Download</a>
+                        <a href="buston.html" class="btn btn-sm btn-outline-secondary">Privacy Policy</a>
                       </div>
                     </div>
                   </div>
@@ -126,7 +127,7 @@
         <p class="float-right"><a href="#">Back to top</a></p>
         <p>&copy; 2011-2018 Jolly Code</p>
 
-        <small class="float-right">Google Play and the Google Play logo are trademarks of Google LLC.</small>
+        <small class="float-right text-muted">Google Play and the Google Play logo are trademarks of Google LLC.</small>
       </footer>
     </main>      
 
