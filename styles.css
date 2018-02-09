@@ -1,11 +1,14 @@
-@media (min-width: 992px) { 
-    .container {
-      max-width: 900px;
-    }
-  }
-  
 .logo   {
     height: 70px;
+}
+  
+.appicon   {
+    max-height: 300px;
+    max-width: 300px;
+}
+
+.download-links{
+    max-width: 400px;
 }
 
 .mslink{
@@ -35,4 +38,9 @@
     padding-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.img-attrib{
+    margin-top: 30px;
+    max-width: 120px;
 }
