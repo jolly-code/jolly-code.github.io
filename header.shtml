@@ -1,0 +1,13 @@
+
+<div class="container">
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom">
+    <a class="img-fluid my-0 mr-md-auto font-weight-normal logo" href="/">
+      <img src="/logo.png" style="height: 70px;" alt="Jolly Code">
+    </a>
+
+    <nav class="my-2 my-md-0 mr-md-3">
+      <a class="p-2 text-dark" href="https://www.microsoft.com/en-us/search/result.aspx?q=jolly+code&amp;form=apps&amp;search=#nav-apps" class="btn btn-secondary my-2">Microsoft Store</a>
+      <a class="p-2 text-dark" href="https://play.google.com/store/apps/developer?id=Jolly+Code" class="btn btn-secondary my-2">Google Play</a>
+    </nav>
+  </div>
+</div>
