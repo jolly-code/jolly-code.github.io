@@ -17,26 +17,26 @@
       <link href="style.css" rel="stylesheet">
     </head>
     <body>
-<!--#include virtual="/header.shtml" -->
+<!--#include file="/header.shtml" -->
 
-<!--#include virtual="/resistor/header.shtml" -->
+<!--#include file="header.shtml" -->
 
       <div class="container">
         <div class="dropdown float-right my-3">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Band Count
           </button>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">3 bands</a>
-            <a class="dropdown-item" href="#">4 bands</a>
-            <a class="dropdown-item" href="#">5 bands (3 significant figures)</a>
-            <a class="dropdown-item" href="#">5 bands (temperature coefficient)</a>
-            <a class="dropdown-item" href="#">6 bands</a>
-          </div>
+          <ul id="bandList" class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            <li class="dropdown-item" id="3band">3 bands</a>
+            <li class="dropdown-item" id="4band">4 bands</a>
+            <li class="dropdown-item" id="5band">5 bands (3 significant figures)</a>
+            <li class="dropdown-item" id="5bandT">5 bands (temperature coefficient)</a>
+            <li class="dropdown-item active" id="6band">6 bands</a>
+          </ul>
         </div>
 
         <div class="float-right mx-3 my-3">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#solverModal">
             Solver
           </button>
         </div>
@@ -45,212 +45,307 @@
           <div class="col">
               <div id="wire"></div>
               <div class="resistor" id="top">
-                <div class="band" id="b100"></div>
-              </div>
-              <div class="resistor" id="center">
-                <div class="band" id="b10"></div>
                 <div class="band" id="b1"></div>
               </div>
               <div class="resistor" id="bottom">
-                <div class="band" id="bMultiplier"></div>
+                <div class="band" id="b6"></div>
+              </div>
+              <div class="resistor" id="center">
+                <div class="band" id="b2"></div>
+                <div class="band" id="b3"></div>
+                <div class="band" id="b5"></div>
+                <div class="band" id="b4"></div>
               </div>
           </div>
           
-          <div class="col-8 my-4">
+          <div class="col-8 my-2">
             <div>
               <h1 id="resistorValueText"></h1>
             </div>
 
             <div id="main-button-area">
-              <div class="btn-group btn-group-toggle my-2" data-toggle="buttons">
-                <label class="btn btn-secondary bandColor active">
-                  <input type="radio" name="b100options" autocomplete="off" checked> 
-                  <div class="bandColorInner black"></div>
-                </label>
-                <label class="btn btn-secondary bandColor">
-                  <input type="radio" name="b100options" autocomplete="off"> 
-                  <div class="bandColorInner brown"></div>
-                </label>
-                <label class="btn btn-secondary bandColor">
-                  <input type="radio" name="b100options" autocomplete="off"> 
-                  <div class="bandColorInner red"></div>
-                </label>
-                <label class="btn btn-secondary bandColor">
-                  <input type="radio" name="b100options" autocomplete="off"> 
-                  <div class="bandColorInner orange"></div>
-                </label>
-                <label class="btn btn-secondary bandColor">
-                  <input type="radio" name="b100options" autocomplete="off"> 
-                  <div class="bandColorInner yellow"></div>
-                </label>
-                <label class="btn btn-secondary bandColor">
-                  <input type="radio" name="b100options" autocomplete="off"> 
-                  <div class="bandColorInner green"></div>
-                </label>
-                <label class="btn btn-secondary bandColor">
-                  <input type="radio" name="b100options" autocomplete="off"> 
-                  <div class="bandColorInner blue"></div>
-                </label>
-                <label class="btn btn-secondary bandColor">
-                  <input type="radio" name="b100options" autocomplete="off"> 
-                  <div class="bandColorInner violet"></div>
-                </label>
-                <label class="btn btn-secondary bandColor">
-                  <input type="radio" name="b100options" autocomplete="off"> 
-                  <div class="bandColorInner grey"></div>
-                </label>
-                <label class="btn btn-secondary bandColor">
-                  <input type="radio" name="b100options" autocomplete="off"> 
-                  <div class="bandColorInner white"></div>
-                </label>
+              <div id="100BandSelect" class="my-2">
+                  <label>100s Figure</label>
+                  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary bandColor active">
+                      <input type="radio" name="b100options" autocomplete="off" checked> 
+                      <div class="bandColorInner black"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor">
+                      <input type="radio" name="b100options" autocomplete="off"> 
+                      <div class="bandColorInner brown"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor">
+                      <input type="radio" name="b100options" autocomplete="off"> 
+                      <div class="bandColorInner red"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor">
+                      <input type="radio" name="b100options" autocomplete="off"> 
+                      <div class="bandColorInner orange"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor">
+                      <input type="radio" name="b100options" autocomplete="off"> 
+                      <div class="bandColorInner yellow"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor">
+                      <input type="radio" name="b100options" autocomplete="off"> 
+                      <div class="bandColorInner green"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor">
+                      <input type="radio" name="b100options" autocomplete="off"> 
+                      <div class="bandColorInner blue"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor">
+                      <input type="radio" name="b100options" autocomplete="off"> 
+                      <div class="bandColorInner violet"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor">
+                      <input type="radio" name="b100options" autocomplete="off"> 
+                      <div class="bandColorInner grey"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor">
+                      <input type="radio" name="b100options" autocomplete="off"> 
+                      <div class="bandColorInner white"></div>
+                    </label>
+                  </div>
               </div>
 
-              <div class="btn-group btn-group-toggle my-2" data-toggle="buttons">
-                <label class="btn btn-secondary bandColor active">
-                  <input type="radio" name="b10options" autocomplete="off" checked>  
-                  <div class="bandColorInner black"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="b10options" autocomplete="off"> 
-                  <div class="bandColorInner brown"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="b10options" autocomplete="off"> 
-                  <div class="bandColorInner red"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="b10options" autocomplete="off"> 
-                  <div class="bandColorInner orange"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="b10options" autocomplete="off"> 
-                  <div class="bandColorInner yellow"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="b10options" autocomplete="off"> 
-                  <div class="bandColorInner green"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="b10options" autocomplete="off"> 
-                  <div class="bandColorInner blue"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="b10options" autocomplete="off"> 
-                  <div class="bandColorInner violet"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="b10options" autocomplete="off"> 
-                  <div class="bandColorInner grey"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="b10options" autocomplete="off"> 
-                  <div class="bandColorInner white"></div>
-                </label>
+              <div id="10BandSelect" class="my-2">
+                  <label>10s Figure</label>
+                  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary bandColor active">
+                      <input type="radio" name="b10options" autocomplete="off" checked>  
+                      <div class="bandColorInner black"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="b10options" autocomplete="off"> 
+                      <div class="bandColorInner brown"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="b10options" autocomplete="off"> 
+                      <div class="bandColorInner red"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="b10options" autocomplete="off"> 
+                      <div class="bandColorInner orange"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="b10options" autocomplete="off"> 
+                      <div class="bandColorInner yellow"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="b10options" autocomplete="off"> 
+                      <div class="bandColorInner green"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="b10options" autocomplete="off"> 
+                      <div class="bandColorInner blue"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="b10options" autocomplete="off"> 
+                      <div class="bandColorInner violet"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="b10options" autocomplete="off"> 
+                      <div class="bandColorInner grey"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="b10options" autocomplete="off"> 
+                      <div class="bandColorInner white"></div>
+                    </label>
+                  </div>
               </div>
 
-              <div class="btn-group btn-group-toggle my-2" data-toggle="buttons">
-                <label class="btn btn-secondary bandColor active">
-                  <input type="radio" name="b1options" autocomplete="off" checked> 
-                  <div class="bandColorInner black"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="b1options" autocomplete="off"> 
-                  <div class="bandColorInner brown"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="b1options" autocomplete="off"> 
-                  <div class="bandColorInner red"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="b1options" autocomplete="off"> 
-                  <div class="bandColorInner orange"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="b1options" autocomplete="off"> 
-                  <div class="bandColorInner yellow"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="b1options" autocomplete="off"> 
-                  <div class="bandColorInner green"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="b1options" autocomplete="off"> 
-                  <div class="bandColorInner blue"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="b1options" autocomplete="off"> 
-                  <div class="bandColorInner violet"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="b1options" autocomplete="off"> 
-                  <div class="bandColorInner grey"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="b1options" autocomplete="off"> 
-                  <div class="bandColorInner white"></div>
-                </label>
+              <div id="1BandSelect" class="my-2">
+                  <label>1s Figure</label>
+                  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary bandColor active">
+                      <input type="radio" name="b1options" autocomplete="off" checked> 
+                      <div class="bandColorInner black"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="b1options" autocomplete="off"> 
+                      <div class="bandColorInner brown"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="b1options" autocomplete="off"> 
+                      <div class="bandColorInner red"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="b1options" autocomplete="off"> 
+                      <div class="bandColorInner orange"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="b1options" autocomplete="off"> 
+                      <div class="bandColorInner yellow"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="b1options" autocomplete="off"> 
+                      <div class="bandColorInner green"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="b1options" autocomplete="off"> 
+                      <div class="bandColorInner blue"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="b1options" autocomplete="off"> 
+                      <div class="bandColorInner violet"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="b1options" autocomplete="off"> 
+                      <div class="bandColorInner grey"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="b1options" autocomplete="off"> 
+                      <div class="bandColorInner white"></div>
+                    </label>
+                  </div>
               </div>
 
-              <div class="btn-group btn-group-toggle my-2" data-toggle="buttons">
-                <label class="btn btn-secondary bandColor  active">
-                  <input type="radio" name="bMoptions" autocomplete="off" checked> 
-                  <div class="bandColorInner black"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="bMoptions" autocomplete="off"> 
-                  <div class="bandColorInner brown"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="bMoptions" autocomplete="off"> 
-                  <div class="bandColorInner red"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="bMoptions" autocomplete="off"> 
-                  <div class="bandColorInner orange"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="bMoptions" autocomplete="off"> 
-                  <div class="bandColorInner yellow"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="bMoptions" autocomplete="off"> 
-                  <div class="bandColorInner green"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="bMoptions" autocomplete="off"> 
-                  <div class="bandColorInner blue"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="bMoptions" autocomplete="off"> 
-                  <div class="bandColorInner violet"></div>
-                </label>
-                <label class="btn btn-secondary bandColor">
-                  <input type="radio" name="bMoptions" autocomplete="off"> 
-                  <div class="bandColorInner grey"></div>
-                </label>
-                <label class="btn btn-secondary bandColor">
-                  <input type="radio" name="bMoptions" autocomplete="off"> 
-                  <div class="bandColorInner white"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="bMoptions" autocomplete="off"> 
-                  <div class="bandColorInner silver"></div>
-                </label>
-                <label class="btn btn-secondary bandColor ">
-                  <input type="radio" name="bMoptions" autocomplete="off"> 
-                  <div class="bandColorInner gold"></div>
-                </label>
+              <div id="multiplierBandSelect" class="my-2">
+                  <label>Multiplier</label>
+                  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary bandColor active">
+                      <input type="radio" name="bMoptions" autocomplete="off" checked> 
+                      <div class="bandColorInner black"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bMoptions" autocomplete="off"> 
+                      <div class="bandColorInner brown"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bMoptions" autocomplete="off"> 
+                      <div class="bandColorInner red"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bMoptions" autocomplete="off"> 
+                      <div class="bandColorInner orange"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bMoptions" autocomplete="off"> 
+                      <div class="bandColorInner yellow"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bMoptions" autocomplete="off"> 
+                      <div class="bandColorInner green"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bMoptions" autocomplete="off"> 
+                      <div class="bandColorInner blue"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bMoptions" autocomplete="off"> 
+                      <div class="bandColorInner violet"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor">
+                      <input type="radio" name="bMoptions" autocomplete="off"> 
+                      <div class="bandColorInner grey"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor">
+                      <input type="radio" name="bMoptions" autocomplete="off"> 
+                      <div class="bandColorInner white"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bMoptions" autocomplete="off"> 
+                      <div class="bandColorInner gold"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bMoptions" autocomplete="off"> 
+                      <div class="bandColorInner silver"></div>
+                    </label>
+                  </div>
+              </div>
+
+              <div id="toleranceBandSelect" class="my-2">
+                  <label>Tolerance</label>
+                  <div class="clearfix"></div>
+                  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary bandColor active">
+                      <input type="radio" name="bToptions" autocomplete="off" checked> 
+                      <div class="bandColorInner brown"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bToptions" autocomplete="off"> 
+                      <div class="bandColorInner red"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bToptions" autocomplete="off"> 
+                      <div class="bandColorInner green"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bToptions" autocomplete="off"> 
+                      <div class="bandColorInner blue"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bToptions" autocomplete="off"> 
+                      <div class="bandColorInner violet"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor">
+                      <input type="radio" name="bToptions" autocomplete="off"> 
+                      <div class="bandColorInner grey"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bToptions" autocomplete="off"> 
+                      <div class="bandColorInner gold"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bToptions" autocomplete="off"> 
+                      <div class="bandColorInner silver"></div>
+                    </label>
+                  </div>
+              </div>
+              
+              <div id="tempCoeffBandSelect" class="my-2">
+                  <label>Temperature Coefficient</label>
+                  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary bandColor active">
+                      <input type="radio" name="bTCoptions" autocomplete="off" checked> 
+                      <div class="bandColorInner black"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bTCoptions" autocomplete="off"> 
+                      <div class="bandColorInner brown"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bTCoptions" autocomplete="off"> 
+                      <div class="bandColorInner red"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bTCoptions" autocomplete="off"> 
+                      <div class="bandColorInner orange"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bTCoptions" autocomplete="off"> 
+                      <div class="bandColorInner yellow"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bTCoptions" autocomplete="off"> 
+                      <div class="bandColorInner green"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bTCoptions" autocomplete="off"> 
+                      <div class="bandColorInner blue"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor ">
+                      <input type="radio" name="bTCoptions" autocomplete="off"> 
+                      <div class="bandColorInner violet"></div>
+                    </label>
+                    <label class="btn btn-secondary bandColor">
+                      <input type="radio" name="bTCoptions" autocomplete="off"> 
+                      <div class="bandColorInner grey"></div>
+                    </label>
+                  </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="solverModal" tabindex="-1" role="dialog" aria-labelledby="solverLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Solver</h5>
+              <h5 class="modal-title" id="solverLabel">Solver</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -258,16 +353,16 @@
             <div class="modal-body">
                 <form>
                   <div class="form-group">
-                    <input type="number" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter value">
+                    <input type="number" class="form-control form-control-lg" id="valueInput" aria-describedby="emailHelp" placeholder="Enter value">
                   </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <label for="exampleInputEmail1">Select unit</label>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Ohms</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">KO</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">MO</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">GO</button>
+              <label for="valueInput">Select unit</label>
+              <button type="button" id="solverBaseButton" class="btn btn-secondary" data-dismiss="modal">Ohms</button>
+              <button type="button" id="solverKButton" class="btn btn-secondary" data-dismiss="modal">KO</button>
+              <button type="button" id="solverMButton" class="btn btn-secondary" data-dismiss="modal">MO</button>
+              <button type="button" id="solverGButton" class="btn btn-secondary" data-dismiss="modal">GO</button>
             </div>
           </div>
         </div>
