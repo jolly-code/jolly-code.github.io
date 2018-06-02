@@ -34,19 +34,16 @@ function getMultiplierFromColor(color){
 
 function getToleranceFromColor(color){
     switch(color){
-        case "brown": return 1;
-        case "red": return 2;
-        case "green": return .5;
-        case "blue": return .25;
-        case "violet": return .1;
-        case "grey": return .05;
-        case "gold": return 5;
-        case "silver": return 10;
-        default: return 20;
+        case "brown": return .01;
+        case "red": return .02;
+        case "green": return .005;
+        case "blue": return .0025;
+        case "violet": return .001;
+        case "grey": return .0005;
+        case "gold": return .05;
+        case "silver": return .10;
+        default: return .20;
     }
-}
-function getToleranceString(value){
-    return value + "%";
 }
 
 function getTempCoeffFromColor(color){
@@ -67,51 +64,70 @@ function getTempCoeffString(value){
     return value + "ppm/K";
 }
 
-function getValueString(value) {
+function getRoundedValue(value) {
+    return Math.round(value * 1000) / 1000;
+}
+function getValueString(value) {    
     if (value == 0)
         return "0Ω";
     if (value < 1)
-        return value * 1000 + "mΩ";
+        return getRoundedValue(value * 1000) + "mΩ";
     if (value < 1000)
-        return value + "Ω";
+        return getRoundedValue(value) + "Ω";
     if (value < 1000000)
-        return value / 1000 + "KΩ";
+        return getRoundedValue(value / 1000) + "KΩ";
     if (value < 1000000000)
-        return value / 1000000 + "MΩ";
+        return getRoundedValue(value / 1000000) + "MΩ";
 
-    return value / 1000000000 + "GΩ";
+    return getRoundedValue(value / 1000000000) + "GΩ";
+
 }
+function getValueToleranceString(value, tolerance) {
+    var displayId = $('#toleranceDisplayList li.active')[0].id;
     
-var b100 = document.getElementById("b1");
-var b10 = document.getElementById("b2");
-var b1 = document.getElementById("b3");
-var bMultiplier = document.getElementById("b5");
-var bTolerance = document.getElementById("b4");
-var bTempCoeff = document.getElementById("b6");
-var resistorValueText = document.getElementById("resistorValueText");
+    if(displayId == "percent")
+        return getValueString(value) + " " + (tolerance * 100) + "%";
+
+    var varience = tolerance * value;
+
+    if(displayId == "range")
+        return getValueString(value - varience) + " - " + getValueString(value + varience);
+
+    return getValueString(value) + " ± " + getValueString(varience);
+}
 
 function evaluate(){
     var value = (100 * getValueFromColor(b100.style.backgroundColor) +
                  10 * getValueFromColor(b10.style.backgroundColor) +
                  1 * getValueFromColor(b1.style.backgroundColor)) *
                  getMultiplierFromColor(bMultiplier.style.backgroundColor);
-    var string = getValueString(value);
 
     var tolerance = getToleranceFromColor(bTolerance.style.backgroundColor);
-    if(tolerance > 0)
-        string += " " + getToleranceString(tolerance);
+    
+    var string = getValueToleranceString(value, tolerance);
 
     var tempCoeff = getTempCoeffFromColor(bTempCoeff.style.backgroundColor);
     if(tempCoeff > 0)
         string += " " + getTempCoeffString(tempCoeff);
 
-    resistorValueText.innerHTML = string;
+    $("#resistorValueText")[0].innerHTML = string;
 }
 
 
+var b100;
+var b10;
+var b1;
+var bMultiplier;
+var bTolerance;
+var bTempCoeff;
+
 function selectColor() {
-    var classes = $( "input[name=b100options]:checked" )[0].parentElement.children[1].classList;
-    b100.style.backgroundColor = classes[1];
+    var classes;
+
+    if(b100.style.backgroundColor != "transparent"){
+        classes = $( "input[name=b100options]:checked" )[0].parentElement.children[1].classList;
+        b100.style.backgroundColor = classes[1];
+    }
 
     classes = $( "input[name=b10options]:checked" )[0].parentElement.children[1].classList;
     b10.style.backgroundColor = classes[1];
@@ -122,19 +138,20 @@ function selectColor() {
     classes = $( "input[name=bMoptions]:checked" )[0].parentElement.children[1].classList;
     bMultiplier.style.backgroundColor = classes[1];
 
-    classes = $( "input[name=bToptions]:checked" )[0].parentElement.children[1].classList;
-    bTolerance.style.backgroundColor = classes[1];
+    if(bTolerance.style.backgroundColor != "transparent"){
+        classes = $( "input[name=bToptions]:checked" )[0].parentElement.children[1].classList;
+        bTolerance.style.backgroundColor = classes[1];
+    }
 
-    classes = $( "input[name=bTCoptions]:checked" )[0].parentElement.children[1].classList;
-    bTempCoeff.style.backgroundColor = classes[1];
-
-    evaluate();
+    if(bTempCoeff.style.backgroundColor != "transparent"){
+        classes = $( "input[name=bTCoptions]:checked" )[0].parentElement.children[1].classList;
+        bTempCoeff.style.backgroundColor = classes[1];
+    }
 };
-
-selectColor();
 
 $(document).on('change', 'input:radio', function (event) {
     selectColor();
+    evaluate();
 });
 
 
@@ -143,10 +160,9 @@ function solve(multiplier){
     if(value >= 0){
         value *= multiplier;
 
-        //force to 4 count
+        default4BandSelect();
 
-        var resistorValueText = document.getElementById("resistorValueText");
-        resistorValueText.innerHTML = getValueString(value);
+        $("#resistorValueText")[0].innerHTML = getValueString(value);
     }
 }
 
@@ -173,51 +189,114 @@ $('#bandList li').on('click', function(){
 });
 
 $('#3band').on('click', function(){
+    b100 = document.getElementById("b6");
+    b10 = document.getElementById("b1");
+    b1 = document.getElementById("b2");
+    bMultiplier = document.getElementById("b3");
+    bTolerance = document.getElementById("b4");
+    bTempCoeff = document.getElementById("b5");
+
     $('#100BandSelect')[0].style.display = 'none';
     $('#toleranceBandSelect')[0].style.display = 'none';
     $('#tempCoeffBandSelect')[0].style.display = 'none';
 
-    $('#b4')[0].style.display = 'none';
-    $('#b5')[0].style.display = 'none';
-    $('#b6')[0].style.display = 'none';
+    $('#b4')[0].style.backgroundColor = 'transparent';
+    $('#b5')[0].style.backgroundColor = 'transparent';
+    $('#b6')[0].style.backgroundColor = 'transparent';
+    selectColor();
+    evaluate();
 });
 
-$('#4band').on('click', function(){
+
+function default4BandSelect(){
+    $('#bandList li').removeClass("active");
+    $("#4band").addClass("active");
+    
+    b100 = document.getElementById("b6");
+    b10 = document.getElementById("b1");
+    b1 = document.getElementById("b2");
+    bMultiplier = document.getElementById("b3");
+    bTolerance = document.getElementById("b4");
+    bTempCoeff = document.getElementById("b5");
+
     $('#100BandSelect')[0].style.display = 'none';
     $('#toleranceBandSelect')[0].style.display = 'block';
     $('#tempCoeffBandSelect')[0].style.display = 'none';
 
-    $('#b4')[0].style.display = 'block';
-    $('#b5')[0].style.display = 'none';
-    $('#b6')[0].style.display = 'none';
+    $('#b4')[0].style.backgroundColor = null;
+    $('#b5')[0].style.backgroundColor = 'transparent';
+    $('#b6')[0].style.backgroundColor = 'transparent';
+    selectColor();
+    evaluate();
+}
+$('#4band').on('click', function(){
+    default4BandSelect();
 });
 
 $('#5band').on('click', function(){
+    b100 = document.getElementById("b1");
+    b10 = document.getElementById("b2");
+    b1 = document.getElementById("b3");
+    bMultiplier = document.getElementById("b5");
+    bTolerance = document.getElementById("b4");
+    bTempCoeff = document.getElementById("b6");
+
     $('#100BandSelect')[0].style.display = 'block';
     $('#toleranceBandSelect')[0].style.display = 'none';
     $('#tempCoeffBandSelect')[0].style.display = 'block';
 
-    $('#b4')[0].style.display = 'block';
-    $('#b5')[0].style.display = 'block';
-    $('#b6')[0].style.display = 'none';
+    $('#b4')[0].style.backgroundColor = null;
+    $('#b5')[0].style.backgroundColor = null;
+    $('#b6')[0].style.backgroundColor = 'transparent';
+    selectColor();
+    evaluate();
 });
 
 $('#5bandT').on('click', function(){
+    b100 = document.getElementById("b6");
+    b10 = document.getElementById("b1");
+    b1 = document.getElementById("b2");
+    bMultiplier = document.getElementById("b3");
+    bTolerance = document.getElementById("b4");
+    bTempCoeff = document.getElementById("b5");
+
     $('#100BandSelect')[0].style.display = 'none';
     $('#toleranceBandSelect')[0].style.display = 'block';
     $('#tempCoeffBandSelect')[0].style.display = 'block';
 
-    $('#b4')[0].style.display = 'block';
-    $('#b5')[0].style.display = 'none';
-    $('#b6')[0].style.display = 'block';
+    $('#b4')[0].style.backgroundColor = null;
+    $('#b5')[0].style.backgroundColor = 'transparent';
+    $('#b6')[0].style.backgroundColor = null;
+    selectColor();
+    evaluate();
 });
 
 $('#6band').on('click', function(){
+    b100 = document.getElementById("b1");
+    b10 = document.getElementById("b2");
+    b1 = document.getElementById("b3");
+    bMultiplier = document.getElementById("b5");
+    bTolerance = document.getElementById("b4");
+    bTempCoeff = document.getElementById("b6");
+
     $('#100BandSelect')[0].style.display = 'block';
     $('#toleranceBandSelect')[0].style.display = 'block';
     $('#tempCoeffBandSelect')[0].style.display = 'block';
 
-    $('#b4')[0].style.display = 'block';
-    $('#b5')[0].style.display = 'block';
-    $('#b6')[0].style.display = 'block';
+    $('#b4')[0].style.backgroundColor = null;
+    $('#b5')[0].style.backgroundColor = null;
+    $('#b6')[0].style.backgroundColor = null;
+    selectColor();
+    evaluate();
 });
+
+
+$('#toleranceDisplayList li').on('click', function(){
+    $('#toleranceDisplayList li').removeClass("active");
+    $(this).addClass("active");
+
+    evaluate();
+});
+
+$("#percent").addClass("active");
+default4BandSelect();

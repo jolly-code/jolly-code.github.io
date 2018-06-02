@@ -23,19 +23,30 @@
 
       <div class="container">
         <div class="dropdown float-right my-3">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Band Count
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="bandMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Band count
           </button>
-          <ul id="bandList" class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+          <ul id="bandList" class="dropdown-menu dropdown-menu-right" aria-labelledby="bandMenuButton">
             <li class="dropdown-item" id="3band">3 bands</a>
             <li class="dropdown-item" id="4band">4 bands</a>
             <li class="dropdown-item" id="5band">5 bands (3 significant figures)</a>
             <li class="dropdown-item" id="5bandT">5 bands (temperature coefficient)</a>
-            <li class="dropdown-item active" id="6band">6 bands</a>
+            <li class="dropdown-item" id="6band">6 bands</a>
           </ul>
         </div>
 
-        <div class="float-right mx-3 my-3">
+        <div class="dropdown float-right mx-3 my-3">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="toleranceMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Tolerance display
+          </button>
+          <ul id="toleranceDisplayList" class="dropdown-menu dropdown-menu-right" aria-labelledby="toleranceMenuButton">
+            <li class="dropdown-item" id="percent">Percent</a>
+            <li class="dropdown-item" id="absolute">Absolute</a>
+            <li class="dropdown-item" id="range">Range</a>
+          </ul>
+        </div>
+
+        <div class="float-right my-3">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#solverModal">
             Solver
           </button>
