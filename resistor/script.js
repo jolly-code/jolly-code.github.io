@@ -64,21 +64,6 @@ function getTempCoeffString(value){
     return value + "ppm/K";
 }
 
-function getValueString(value) {    
-    if (value == 0)
-        return "0Ω";
-    if (value < 1)
-        return getRoundedValue(value * 1000) + "mΩ";
-    if (value < 1000)
-        return getRoundedValue(value) + "Ω";
-    if (value < 1000000)
-        return getRoundedValue(value / 1000) + "KΩ";
-    if (value < 1000000000)
-        return getRoundedValue(value / 1000000) + "MΩ";
-
-    return getRoundedValue(value / 1000000000) + "GΩ";
-
-}
 function getValueToleranceString(value, tolerance) {
     var displayId = $('#toleranceDisplayList li.active')[0].id;
     
@@ -149,34 +134,6 @@ function selectColor() {
 $(document).on('change', 'input:radio', function (event) {
     selectColor();
     evaluate();
-});
-
-
-function solve(multiplier){
-    var value = $("#valueInput").val().trim();
-    if(value >= 0){
-        value *= multiplier;
-
-        default4BandSelect();
-
-        $("#resistorValueText")[0].innerHTML = getValueString(value);
-    }
-}
-
-$('#solverBaseButton').on('click', function(event) {
-    solve(1);
-});
-
-$('#solverKButton').on('click', function(event) {
-    solve(1000);
-});
-
-$('#solverMButton').on('click', function(event) {
-    solve(1000 * 1000);
-});
-
-$('#solverGButton').on('click', function(event) {
-    solve(1000 * 1000 * 1000);
 });
 
 
