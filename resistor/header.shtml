@@ -14,6 +14,9 @@
                 <li class="nav-item" id="homeTab">
                     <a class="nav-link" href=".">Standard</a>
                 </li>
+                <li class="nav-item" id="homeTab">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#solverModal">Solver</a>
+                </li>
                 <li class="nav-item" id="smdTab">
                     <a class="nav-link" href="smd.htm">SMD</a>
                 </li>
@@ -27,3 +30,31 @@
         </div>
     </div>
 </nav>  
+
+
+<div class="modal fade" id="solverModal" tabindex="-1" role="dialog" aria-labelledby="solverLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="solverLabel">Solver</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                <div class="form-group">
+                    <input type="number" step="0.001" class="form-control form-control-lg" id="valueInput" aria-describedby="emailHelp" placeholder="Enter value">
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+            <label for="valueInput">Select unit</label>
+            <button type="button" id="solverBaseButton" class="btn btn-secondary" data-dismiss="modal">Ohms</button>
+            <button type="button" id="solverKButton" class="btn btn-secondary" data-dismiss="modal">KO</button>
+            <button type="button" id="solverMButton" class="btn btn-secondary" data-dismiss="modal">MO</button>
+            <button type="button" id="solverGButton" class="btn btn-secondary" data-dismiss="modal">GO</button>
+            </div>
+        </div>
+    </div>
+  </div>

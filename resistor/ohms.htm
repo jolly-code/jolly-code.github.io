@@ -50,10 +50,33 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+      <script src="shared.js"></script>
+
       <script type="text/javascript">
         $("#ohmsTab").addClass("active");
         
         var changeStack = [];
+
+        function divide(dividend, divider, target){
+            if(dividend >= 0 && divider >= 0){
+                if(divider == 0){
+                    target.attr("placeholder", "Undefined");
+                    target.val(null);
+                }
+                else {
+                    z = dividend / divider;
+                    target.attr("placeholder", null);
+                    target.val(getRoundedValue(z));
+                }
+            }
+        }
+        function multiply(senderValue, multiplier, target){
+            if(senderValue >= 0 && multiplier >= 0){
+                z = senderValue * multiplier;
+                target.attr("placeholder", null);
+                target.val(getRoundedValue(z));
+            }
+        }
 
         function evaluate(sender, alt1, alt2){
             var id = sender.attr("id");
@@ -75,28 +98,21 @@
             var y = alt1.val().trim();
             var z = alt2.val().trim();
 
-            if(last == alt1.attr("id") && x >= 0 && y >= 0){
-                if(y == 0){
-                    alt2.attr("placeholder", "Undefined");
-                    alt2.val(null);
-                }
-                else {
-                    z = x / y;
-                    alt2.attr("placeholder", null);
-                    alt2.val(z);
-                }
+            if(last == alt1.attr("id")){
+                if(alt2.attr("id") == "voltage")
+                    multiply(x, y, alt2);
+                else if(id == "voltage")
+                    divide(x, y, alt2);
+                else 
+                    divide(y, x, alt2);
             }
-            else if(x >= 0 && z >= 0){
-                if(z == 0){
-                    alt1.attr("placeholder", "Undefined");
-                    alt1.val(null);
-                }
+            else {
+                if(alt1.attr("id") == "voltage")
+                    multiply(x, z, alt1);
+                else if(id == "voltage")
+                    divide(x, z, alt1);
                 else
-                {
-                    y = x / z;
-                    alt1.attr("placeholder", null);
-                    alt1.val(y);
-                }
+                    divide(z, x, alt1);
             }
 
             changeStack.push(id);

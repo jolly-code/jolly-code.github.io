@@ -64,9 +64,6 @@ function getTempCoeffString(value){
     return value + "ppm/K";
 }
 
-function getRoundedValue(value) {
-    return Math.round(value * 1000) / 1000;
-}
 function getValueString(value) {    
     if (value == 0)
         return "0Ω";

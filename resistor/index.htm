@@ -46,12 +46,6 @@
           </ul>
         </div>
 
-        <div class="float-right my-3">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#solverModal">
-            Solver
-          </button>
-        </div>
-
         <div class="row">
           <div class="col">
               <div id="wire"></div>
@@ -352,33 +346,6 @@
         </div>
       </div>
 
-      <div class="modal fade" id="solverModal" tabindex="-1" role="dialog" aria-labelledby="solverLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="solverLabel">Solver</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                  <div class="form-group">
-                    <input type="number" step="0.001" class="form-control form-control-lg" id="valueInput" aria-describedby="emailHelp" placeholder="Enter value">
-                  </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-              <label for="valueInput">Select unit</label>
-              <button type="button" id="solverBaseButton" class="btn btn-secondary" data-dismiss="modal">Ohms</button>
-              <button type="button" id="solverKButton" class="btn btn-secondary" data-dismiss="modal">KO</button>
-              <button type="button" id="solverMButton" class="btn btn-secondary" data-dismiss="modal">MO</button>
-              <button type="button" id="solverGButton" class="btn btn-secondary" data-dismiss="modal">GO</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -388,6 +355,8 @@
       <script type="text/javascript">
         $("#homeTab").addClass("active");
       </script>
+
+      <script src="shared.js"></script>
 
       <script src="script.js"></script>
     </body>
