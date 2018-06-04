@@ -1,0 +1,21 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "Resistor Calc",
+    "scope": "/resistor/",
+    "display": "browser",
+    "start_url": "https://www.jollycode.net/resistor/",
+    "short_name": "ResistorCalc",
+    "theme_color": "transparent",
+    "description": "",
+    "orientation": "any",
+    "background_color": "transparent",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "/images/favicon.ico",
+            "sizes": "32x32"
+        }
+    ]
+}
