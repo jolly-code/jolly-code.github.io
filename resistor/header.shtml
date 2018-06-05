@@ -14,7 +14,7 @@
                 <li class="nav-item" id="homeTab">
                     <a class="nav-link" href=".">Standard</a>
                 </li>
-                <li class="nav-item" id="homeTab">
+                <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="modal" data-target="#solverModal">Solver</a>
                 </li>
                 <li class="nav-item" id="smdTab">
