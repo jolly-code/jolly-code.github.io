@@ -4,9 +4,20 @@ var CACHE = 'pwabuilder-precache';
 var precacheFiles = [
       /* Add an array of files to precache for your app */
       "index.htm",
+      "Images/favicon.ico",
       "style.css",
+      "/product.css",
+      "boostrap.min.css",
+      "manifest.json",
       "shared.js",
       "script.js",
+      "manup.js",
+      "pwabuilder-sw-register.js",
+      "pwabuilder-sw.js",
+      "jquery-3.2.1.slim.min.js",
+      "popper.min.js",
+      "bootstrap.min.js",
+
       "smd.htm",
       "ohms.htm",
       "about.htm"

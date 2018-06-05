@@ -4,7 +4,7 @@
     "name": "Resistor Calc",
     "scope": "/resistor/",
     "display": "standalone",
-    "start_url": "https://www.jollycode.net/resistor/",
+    "start_url": "https://jollycode.net/resistor/",
     "short_name": "Resistor",
     "theme_color": "#DAA520",
     "description": "Resistor Calc is a calculator that finds the value of a resistor based on its colored bands. If you work with electronic circuits, this is a handy tool that will allow you to be better organized and less prone to errors.",
