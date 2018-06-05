@@ -26,28 +26,30 @@
 <!--#include file="header.shtml" -->
 
       <div class="container">
-        <div class="dropdown float-right my-3">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="bandMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Band count
-          </button>
-          <ul id="bandList" class="dropdown-menu dropdown-menu-right" aria-labelledby="bandMenuButton">
-            <li class="dropdown-item" id="3band">3 bands</a>
-            <li class="dropdown-item" id="4band">4 bands</a>
-            <li class="dropdown-item" id="5band">5 bands (3 significant figures)</a>
-            <li class="dropdown-item" id="5bandT">5 bands (temperature coefficient)</a>
-            <li class="dropdown-item" id="6band">6 bands</a>
-          </ul>
-        </div>
+        <div class="row">
+          <div class="dropdown my-2 mx-1">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="bandMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Band count
+            </button>
+            <ul id="bandList" class="dropdown-menu" aria-labelledby="bandMenuButton">
+              <li class="dropdown-item" id="3band">3 bands</a>
+              <li class="dropdown-item" id="4band">4 bands</a>
+              <li class="dropdown-item" id="5band">5 bands (3 significant figures)</a>
+              <li class="dropdown-item" id="5bandT">5 bands (temperature coefficient)</a>
+              <li class="dropdown-item" id="6band">6 bands</a>
+            </ul>
+          </div>
 
-        <div class="dropdown float-right mx-3 my-3">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="toleranceMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Tolerance display
-          </button>
-          <ul id="toleranceDisplayList" class="dropdown-menu dropdown-menu-right" aria-labelledby="toleranceMenuButton">
-            <li class="dropdown-item" id="percent">Percent</a>
-            <li class="dropdown-item" id="absolute">Absolute</a>
-            <li class="dropdown-item" id="range">Range</a>
-          </ul>
+          <div class="dropdown my-2 mx-1">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="toleranceMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Tolerance display
+            </button>
+            <ul id="toleranceDisplayList" class="dropdown-menu" aria-labelledby="toleranceMenuButton">
+              <li class="dropdown-item" id="percent">Percent</a>
+              <li class="dropdown-item" id="absolute">Absolute</a>
+              <li class="dropdown-item" id="range">Range</a>
+            </ul>
+          </div>
         </div>
 
         <div class="row">
@@ -67,14 +69,15 @@
               </div>
           </div>
           
-          <div class="col-8 my-2">
-            <div class="my-5">
+          <div class="col-9 my-2">
+            <div class="my-2">
               <h1 id="resistorValueText"></h1>
             </div>
 
             <div id="main-button-area">
               <div id="100BandSelect" class="my-2">
                   <label>100s Figure</label>
+                  <div class="clearfix"></div>
                   <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary bandColor active">
                       <input type="radio" name="b100options" autocomplete="off" checked> 
@@ -121,6 +124,7 @@
 
               <div id="10BandSelect" class="my-2">
                   <label>10s Figure</label>
+                  <div class="clearfix"></div>
                   <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary bandColor active">
                       <input type="radio" name="b10options" autocomplete="off" checked>  
@@ -167,6 +171,7 @@
 
               <div id="1BandSelect" class="my-2">
                   <label>1s Figure</label>
+                  <div class="clearfix"></div>
                   <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary bandColor active">
                       <input type="radio" name="b1options" autocomplete="off" checked> 
@@ -213,6 +218,7 @@
 
               <div id="multiplierBandSelect" class="my-2">
                   <label>Multiplier</label>
+                  <div class="clearfix"></div>
                   <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary bandColor active">
                       <input type="radio" name="bMoptions" autocomplete="off" checked> 
@@ -306,6 +312,7 @@
               
               <div id="tempCoeffBandSelect" class="my-2">
                   <label>Temperature Coefficient</label>
+                  <div class="clearfix"></div>
                   <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary bandColor active">
                       <input type="radio" name="bTCoptions" autocomplete="off" checked> 
