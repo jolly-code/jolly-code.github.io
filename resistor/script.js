@@ -131,6 +131,10 @@ function selectColor() {
     }
 };
 
+$('input:radio').each(function( index ) {
+    $(this).attr("aria-label", this.nextElementSibling.classList[1]);
+});
+
 $(document).on('change', 'input:radio', function (event) {
     selectColor();
     evaluate();

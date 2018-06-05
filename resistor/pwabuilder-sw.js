@@ -16,8 +16,7 @@ var precacheFiles = [
       "pwabuilder-sw.js",
       "jquery-3.2.1.slim.min.js",
       "popper.min.js",
-      "bootstrap.min.js",
-
+      "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js",
       "smd.htm",
       "ohms.htm",
       "about.htm"
