@@ -38,16 +38,16 @@
             "sizes": "192x192"
         },
         {
-            "src": "/resistor/Images/Square44x44Logo.scale-200.png",
-            "sizes": "88x88"
+            "src": "/resistor/Images/Square44x44Logo.scale-100.png",
+            "sizes": "44x44"
         },
         {
-            "src": "/resistor/Images/StoreLogo.scale-200.png",
-            "sizes": "100x100"
+            "src": "/resistor/Images/StoreLogo.scale-100.png",
+            "sizes": "50x50"
         },
         {
-            "src": "/resistor/Images/Square150x150Logo.scale-200.png",
-            "sizes": "300x300"
+            "src": "/resistor/Images/Square150x150Logo.scale-100.png",
+            "sizes": "150x150"
         }
     ]
 }
