@@ -29,6 +29,10 @@ function solve(multiplier){
     }
 }
 
+$('#solvermButton').on('click', function(event) {
+    solve(.001);
+});
+
 $('#solverBaseButton').on('click', function(event) {
     solve(1);
 });
