@@ -258,3 +258,109 @@ $('#toleranceDisplayList li').on('click', function(){
 
 $("#percent").addClass("active");
 default4BandSelect();
+
+
+
+function getColorFromMultiplier(multiplier){
+    switch(multiplier){
+        case -2: return "silver";
+        case -1: return "gold";
+        case 0: return "black";
+        case 1: return "brown";
+        case 2: return "red";
+        case 3: return "orange";
+        case 4: return "yellow";
+        case 5: return "green";
+        case 6: return "blue";
+        case 7: return "violet";
+        case 8: return "grey";
+        case 9: return "white";
+        default: return null;
+    }
+}
+
+function getColorFromValue(value){
+    switch(value){
+        case 0: return "black";
+        case 1: return "brown";
+        case 2: return "red";
+        case 3: return "orange";
+        case 4: return "yellow";
+        case 5: return "green";
+        case 6: return "blue";
+        case 7: return "violet";
+        case 8: return "grey";
+        case 9: return "white";
+        default: return null;
+    }
+}
+
+function getColorFromTolerance(tolerance){
+    if(tolerance <= .0005)
+        return "grey";
+    if(tolerance <= .001)
+        return "violet";
+    if(tolerance <= .0025)
+        return "blue";
+    if(tolerance <= .005)
+        return "green";
+    if(tolerance <= .01)
+        return "brown";
+    if(tolerance <= .02)
+        return "red";
+    if(tolerance <= .05)
+        return "gold";
+    if(tolerance <= .1)
+        return "silver";
+    if(tolerance <= .2)
+        return "transparent";
+}
+
+function selectOption(optionName, color){
+    var input = $( `input[name=${optionName}]:checked` );
+    input[0].parentElement.classList.remove("active");
+    input.removeAttr("checked");
+
+    input = $( `input[name=${optionName}][aria-label=${color}]` );
+    input[0].parentElement.classList.add("active");
+    input.attr("checked", "");
+}
+
+if(window.location.search.indexOf("solve") > 0){
+    var value = window.location.search.split("=")[1];
+    
+    var multiplier = 0;
+
+    for(var i = 0; value < 10; i++){
+        value *= 10;
+        multiplier--;
+    }
+
+    for(var i = 0; value > 100; i++){
+        value /= 10;
+        multiplier++;
+    }
+
+    var color = getColorFromMultiplier(multiplier);
+    if(color == null){
+        $('#errorModal').modal('show');
+    }
+    else{
+        selectOption("bMoptions", color);
+
+        var roundedValue = Math.round(value);
+
+        var s1 = parseInt(String(roundedValue)[0]);
+        selectOption("b10options", getColorFromValue(s1));
+
+        var s2 = parseInt(String(roundedValue)[1]);
+        selectOption("b1options", getColorFromValue(s2));
+
+        var percentDiff = Math.abs((value - (s1 * 10 + s2)) / value);
+        selectOption("bToptions", getColorFromTolerance(percentDiff));
+
+        selectColor();
+        evaluate();
+    }
+    
+}
