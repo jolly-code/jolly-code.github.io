@@ -48,7 +48,7 @@
                     </div>
                 </form>
             </div>
-            <div class="modal-footer row">
+            <div class="modal-footer row px-1 py-2 m-0" >
                 <div class="col-sm-auto m-2">
                     <label for="valueInput">Select unit</label>
                 </div>
