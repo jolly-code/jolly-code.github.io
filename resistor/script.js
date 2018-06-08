@@ -331,14 +331,16 @@ if(window.location.search.indexOf("solve") > 0){
     
     var multiplier = 0;
 
-    for(var i = 0; value < 10; i++){
-        value *= 10;
-        multiplier--;
-    }
-
-    for(var i = 0; value > 100; i++){
-        value /= 10;
-        multiplier++;
+    if(value > 0){
+        for(var i = 0; value < 10; i++){
+            value *= 10;
+            multiplier--;
+        }
+    
+        for(var i = 0; value > 100; i++){
+            value /= 10;
+            multiplier++;
+        }
     }
 
     var color = getColorFromMultiplier(multiplier);

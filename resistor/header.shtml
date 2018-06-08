@@ -48,13 +48,17 @@
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-            <label for="valueInput">Select unit</label>
-            <button type="button" id="solvermButton" class="btn btn-secondary" data-dismiss="modal">mΩ</button>
-            <button type="button" id="solverBaseButton" class="btn btn-secondary" data-dismiss="modal">Ω</button>
-            <button type="button" id="solverKButton" class="btn btn-secondary" data-dismiss="modal">KΩ</button>
-            <button type="button" id="solverMButton" class="btn btn-secondary" data-dismiss="modal">MΩ</button>
-            <button type="button" id="solverGButton" class="btn btn-secondary" data-dismiss="modal">GΩ</button>
+            <div class="modal-footer row">
+                <div class="col-sm-auto m-2">
+                    <label for="valueInput">Select unit</label>
+                </div>
+                <div class="col-sm-auto">
+                    <button type="button" id="solvermButton" class="btn btn-secondary" data-dismiss="modal">mΩ</button>
+                    <button type="button" id="solverBaseButton" class="btn btn-secondary" data-dismiss="modal">Ω</button>
+                    <button type="button" id="solverKButton" class="btn btn-secondary" data-dismiss="modal">KΩ</button>
+                    <button type="button" id="solverMButton" class="btn btn-secondary" data-dismiss="modal">MΩ</button>
+                    <button type="button" id="solverGButton" class="btn btn-secondary" data-dismiss="modal">GΩ</button>
+                </div>
             </div>
         </div>
     </div>
