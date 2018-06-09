@@ -10,13 +10,17 @@ label {
     position: absolute;
     min-height: 500px;
     width: 10px;
-    background: linear-gradient(to right, silver, lightgrey, silver); ;
+    background: linear-gradient(to right, grey, lightgrey);
     margin-left: 45px; 
 }
 
 .resistor{
     position: absolute;
-    background: linear-gradient(to right, tan, wheat); ;
+    background-color: tan;
+}
+
+.resistor-overlay{
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.3), transparent, rgba(255, 255, 255, 0.3));
 }
 
 .band{
@@ -84,19 +88,19 @@ label {
     padding-left: 120px;
 }
 
-#top {
+.resistor-top {
     width: 100px;
     height: 100px;
     margin-top: 80px;
     border-radius: 50%;
 }        
-#center {
+.resistor-center {
     width: 80px;
     height: 160px;
     margin-top: 160px;
     margin-left: 10px; 
 }
-#bottom {
+.resistor-bottom {
     width: 100px;
     height: 100px;
     margin-top: 300px;

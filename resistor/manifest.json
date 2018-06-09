@@ -5,13 +5,18 @@
     "scope": "/resistor/",
     "display": "standalone",
     "start_url": "/resistor/",
-    "short_name": "Resistor",
+    "short_name": "ResistorCalc",
     "theme_color": "#3296FA",
     "description": "Resistor Calc is a calculator that finds the value of a resistor based on its colored bands. If you work with electronic circuits, this is a handy tool that will allow you to be better organized and less prone to errors.",
     "orientation": "portrait",
     "background_color": "#3296FA",
-    "related_applications": [],
-    "prefer_related_applications": false,
+    "related_applications": [
+        {
+            "platform": "windows",
+            "url": "https://www.microsoft.com/store/p/resistorcalc/9nblggh093wb"
+        }
+    ],
+    "prefer_related_applications": true,
     "icons": [
         {
             "src": "/resistor/Images/favicon.ico",

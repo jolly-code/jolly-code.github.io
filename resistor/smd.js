@@ -120,6 +120,10 @@ function eia96Multiplier(code){
 $('button').click(function() {
     var text = $("#smdText")[0].innerHTML;
 
+    //fix for capturing other buttons
+    if(!this.parentElement.classList.contains("row"))
+        return;
+
     if(this.id == "delete"){
         if(text.length > 0){
             text = text.slice(0,-1);
@@ -147,6 +151,8 @@ $('button').click(function() {
         }
         else if(text.indexOf('R') >= 0) { 
             value = text.replace('R', '.');
+            if(!$.isNumeric(value))
+                value = null;
         }
         else{
             var base = text.substr(0, text.length - 1);
