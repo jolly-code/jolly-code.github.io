@@ -200,8 +200,8 @@ $('#5band').on('click', function(){
     bTempCoeff = document.getElementById("b6");
 
     $('#100BandSelect')[0].style.display = 'block';
-    $('#toleranceBandSelect')[0].style.display = 'none';
-    $('#tempCoeffBandSelect')[0].style.display = 'block';
+    $('#toleranceBandSelect')[0].style.display = 'block';
+    $('#tempCoeffBandSelect')[0].style.display = 'none';
 
     $('#b4')[0].style.backgroundColor = null;
     $('#b5')[0].style.backgroundColor = null;
@@ -211,12 +211,12 @@ $('#5band').on('click', function(){
 });
 
 $('#5bandT').on('click', function(){
-    b100 = document.getElementById("b6");
+    b100 = document.getElementById("b5");
     b10 = document.getElementById("b1");
     b1 = document.getElementById("b2");
     bMultiplier = document.getElementById("b3");
     bTolerance = document.getElementById("b4");
-    bTempCoeff = document.getElementById("b5");
+    bTempCoeff = document.getElementById("b6");
 
     $('#100BandSelect')[0].style.display = 'none';
     $('#toleranceBandSelect')[0].style.display = 'block';
