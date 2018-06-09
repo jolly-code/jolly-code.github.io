@@ -25,7 +25,7 @@ function solve(multiplier){
     if(value >= 0){
         value *= multiplier;
 
-        location.replace("./?solve=" + value);
+        location.replace("/resistor/?solve=" + value);
     }
 }
 

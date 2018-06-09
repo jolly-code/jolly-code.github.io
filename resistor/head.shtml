@@ -15,3 +15,9 @@ document.write(`<link rel="stylesheet" type="text/css" href="/css/${css}"></link
 <link href="Images/favicon.ico" rel="shortcut icon"></link>
 <meta name="Description" content="Resistor Calc is a calculator that finds the value of a resistor based on its colored bands."/>
 <meta name="theme-color" content="#3296FA"/>
+
+<style>
+body > .container {
+    padding: 75px 15px 0;
+}
+</style>

@@ -1,0 +1,37 @@
+#mainContainer {
+    max-width: 500px;
+    margin: auto;
+}
+
+.resistor-value{
+    line-height: 4.5em;
+}
+
+#resistorValueText{
+    display:inline-block;
+    margin-bottom: 0em;
+}
+
+#smdOuter {
+    max-width: 350px;
+    margin: auto;
+
+    background: linear-gradient(silver, grey);
+    border-radius: 5px;
+}
+
+#smdCenter {
+    width: 70%;
+    margin: auto;
+
+    background-color: black;
+}
+
+#smdText {
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+
+    font-weight: bold;
+    color: white;
+}

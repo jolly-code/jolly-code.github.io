@@ -1,53 +1,12 @@
 <!doctype html>
   <html lang="en">
     <head>
-        <!--#include file="head.shtml" -->
-      
-        <!-- Custom styles for this template -->
-        <link href="/product.css" rel="stylesheet">
+        <!--#include file="../head.shtml" -->
 
-        <style>
-#mainContainer {
-    max-width: 500px;
-    margin: auto;
-}
-
-.resistor-value{
-    line-height: 4.5em;
-}
-
-#resistorValueText{
-    display:inline-block;
-    margin-bottom: 0em;
-}
-
-#smdOuter {
-    max-width: 350px;
-    margin: auto;
-
-    background: linear-gradient(silver, grey);
-    border-radius: 5px;
-}
-
-#smdCenter {
-    width: 70%;
-    margin: auto;
-
-    background-color: black;
-}
-
-#smdText {
-    height: 80px;
-    line-height: 80px;
-    text-align: center;
-
-    font-weight: bold;
-    color: white;
-}
-        </style> 
+        <link href="style.css" rel="stylesheet"></link>
     </head>
     <body>
-<!--#include file="header.shtml" -->
+<!--#include file="../header.shtml" -->
 
       <div id="mainContainer" class="container">
           <div class="text-center resistor-value mt-3 mb-1">
@@ -157,12 +116,12 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-      <script src="shared.js"></script>
+      <script src="../shared.js"></script>
 
       <script type="text/javascript">
         $("#smdTab").addClass("active");
       </script>
 
-      <script src="smd.js"></script>
+      <script src="script.js"></script>
     </body>
   </html>
