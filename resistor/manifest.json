@@ -20,7 +20,7 @@
             "url": "https://play.google.com/store/apps/details?id=net.jollycode.resistor"
         }
     ],
-    "prefer_related_applications": true,
+    "prefer_related_applications": false,
     "icons": [
         {
             "src": "/resistor/Images/favicon.ico",
