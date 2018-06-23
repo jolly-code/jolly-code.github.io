@@ -26,23 +26,7 @@ self.addEventListener('fetch', event => {
     });
   };
 
-  event.waitUntil(updateCache(event.request));
-
-  event.respondWith(
-    fetch(event.request).catch(function(error) {
-      console.log( '[PWA Builder] Network request Failed. Serving content from cache: ' + error );
-
-      //Check to see if you have it in the cache
-      //Return response
-      //If not in the cache, then return error page
-      return caches.open(cacheName).then(function (cache) {
-        return cache.match(event.request).then(function (matching) {
-          var report =  !matching || matching.status == 404?Promise.reject('no-match'): matching;
-          return report
-        });
-      });
-    })
-  );
+  updateCache(event.request);
 })
 
 self.addEventListener('activate',  event => {

@@ -9,3 +9,11 @@ if (navigator.serviceWorker.controller) {
     console.log('[PWA Builder] Service worker has been registered');
   });
 }
+
+
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js')
+    .then(function() {
+          console.log('Service Worker Registered');
+    });
+}
