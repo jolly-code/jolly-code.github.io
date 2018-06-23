@@ -2,7 +2,6 @@
     "dir": "ltr",
     "lang": "en",
     "name": "Resistor Calc",
-    "scope": "/resistor/",
     "display": "standalone",
     "start_url": "/resistor/",
     "short_name": "ResistorCalc",
