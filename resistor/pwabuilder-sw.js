@@ -5,7 +5,7 @@ var cacheName = 'pwabuilder-offline';
 //Install stage sets up the index page (home page) in the cache and opens a new cache
 self.addEventListener('install', function(event) {
   console.log('[ServiceWorker] Install');
-  var indexPage = new Request('/resistor/index.htm');
+  var indexPage = new Request('./');
   event.waitUntil(
     fetch(indexPage).then(function(response) {
       return caches.open(cacheName).then(function(cache) {
@@ -17,6 +17,12 @@ self.addEventListener('install', function(event) {
 
 //If any fetch fails, it will look for the request in the cache and serve it from there first
 self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request, {ignoreSearch:true}).then(response => {
+      return response || fetch(event.request);
+    })
+  );
+  
   var updateCache = function(request){
     return caches.open(cacheName).then(function (cache) {
       return fetch(request.clone()).then(function (response) {
@@ -43,8 +49,8 @@ self.addEventListener('fetch', function(event) {
       });
     })
   );
-})
+});
 
-self.addEventListener('activate',  event => {
+self.addEventListener('activate', function(event) {
   event.waitUntil(self.clients.claim());
 });
