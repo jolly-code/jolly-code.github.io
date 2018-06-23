@@ -6,6 +6,9 @@
       <link href="style.css" rel="stylesheet"/>
 
       <link href="manifest.json" rel="manifest"/>
+      
+      <script src="manup.js"></script>
+      <script src="pwabuilder-sw-register.js"></script>
     </head>
     <body>
       <!--#include file="header.shtml" -->
@@ -383,7 +386,13 @@
 
       <script src="script.js"></script>
       
-      <script src="manup.js"></script>
-      <script src="pwabuilder-sw-register.js"></script>
+      <script>
+        if('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/test/sw.js')
+            .then(function() {
+                  console.log('Service Worker Registered');
+            });
+        }
+      </script>
     </body>
   </html>
