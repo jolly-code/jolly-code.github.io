@@ -2,11 +2,37 @@
   <html lang="en">
     <head>
         <!--#include file="head.shtml" -->
+
+        <style>
+          .mslink{
+              height: 50px;
+              margin: 10px 0px;
+          }
+          
+          .playlink{
+              height: 70px;
+              margin: 0px -10px;
+          }
+        </style>
     </head>
     <body>
       <!--#include virtual="/resistor/header.shtml" -->
 
       <div class="container">
+        <div class="row" id="download-apps">
+          <div class="col-sm-auto mt-4 mr-3">
+            <a href='https://play.google.com/store/apps/details?id=net.jollycode.resistor&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+              <img class="playlink" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/>
+            </a>
+          </div>
+
+          <div class="col-sm-auto mt-4">
+            <a href="https://www.microsoft.com/store/apps/9nblggh093wb?ocid=badge">
+              <img class="mslink" alt="Get it from Microsoft" src="https://assets.windowsphone.com/85864462-9c82-451e-9355-a3d5f874397a/English_get-it-from-MS_InvariantCulture_Default.png" />
+            </a>
+          </div>
+        </div>
+
         <div class="row">
             <form class="col mt-4">
               <h3>Select theme</h3>
@@ -25,15 +51,27 @@
             </form>
         </div>
 
+        <div class="row" id="ms-rate">
+          <a class="col mt-4" href="ms-windows-store://review/?ProductId=9nblggh093wb">
+            <h3>Rate and review</h3>
+          </a>
+        </div>
+
+        <div class="row" id="play-rate">
+          <a class="col mt-4" href="market://details?id=net.jollycode.resistor">
+            <h3>Rate and review</h3>
+          </a>
+        </div>
+
         <div class="row">
-          <a class="col mt-5" href="license.htm">
+          <a class="col mt-4" href="license.htm">
             <h3>License notice</h3>
           </a>
         </div>
 
         <div class="row">
           <div class="col mt-5">
-              <h2 >Resistor Calc v3.0</h2>
+              <h2>Resistor Calc v3.0</h2>
               <p class="text-muted">&copy; 2011-2018 <a class="img-fluid logo" href="/" target="_blank">Jolly Code</a></p>
               
               <script type="text/javascript">
@@ -66,6 +104,19 @@ if (typeof(Storage) !== "undefined") {
 
       location.reload();
   });
+}
+
+if(navigator.userAgent.indexOf("wv") >= 0){
+  $("#download-apps")[0].remove();
+  $("#ms-rate")[0].remove();
+}
+else if(navigator.userAgent.indexOf("MSAppHost") >= 0){
+  $("#download-apps")[0].remove();
+  $("#play-rate")[0].remove();
+}
+else{
+  $("#ms-rate")[0].remove();
+  $("#play-rate")[0].remove();
 }
       </script>
     </body>
