@@ -24,7 +24,10 @@
                 </div>
                 <div class="form-group row">
                     <label class="col-6 col-form-label text-right" for="resistance">Resistance (R)</label>
-                    <input type="number" step="any" min="0" class="form-control text-right col-4" id="resistance" aria-describedby="resistance" placeholder="">
+                    <div class="col-4 p-0 text-right">
+                        <input type="number" step="any" min="0" class="form-control mb-1" id="resistance" aria-describedby="resistance" placeholder="">
+                        <a id="solve-link" href="#">Solve resistor</a>
+                    </div>
                     <label class="col col-form-label">Ω</label>
                 </div>
             </form>
@@ -34,87 +37,10 @@
 
       <script src="shared.js"></script>
 
+      <script src="ohms.js"></script>
+
       <script type="text/javascript">
         $("#ohmsTab").addClass("active");
-        
-        var changeStack = [];
-
-        function divide(dividend, divider, target){
-            if(dividend >= 0 && divider >= 0){
-                if(divider == 0){
-                    target.attr("placeholder", "Undefined");
-                    target.val(null);
-                }
-                else {
-                    z = dividend / divider;
-                    target.attr("placeholder", null);
-                    target.val(getRoundedValue(z));
-                }
-            }
-        }
-        function multiply(senderValue, multiplier, target){
-            if(senderValue >= 0 && multiplier >= 0){
-                z = senderValue * multiplier;
-                target.attr("placeholder", null);
-                target.val(getRoundedValue(z));
-            }
-        }
-
-        function evaluate(sender, alt1, alt2){
-            var id = sender.attr("id");
-            sender.attr("placeholder", null);
-
-            var index = changeStack.indexOf(id);
-            if(index >= 0){
-                changeStack.splice(index, 1);
-            }
-
-            if(changeStack.length == 0) {
-                changeStack.push(id);
-                return;
-            }
-
-            var last = changeStack[changeStack.length-1];
-
-            var x = sender.val().trim();
-            var y = alt1.val().trim();
-            var z = alt2.val().trim();
-
-            if(last == alt1.attr("id")){
-                if(alt2.attr("id") == "voltage")
-                    multiply(x, y, alt2);
-                else if(id == "voltage")
-                    divide(x, y, alt2);
-                else 
-                    divide(y, x, alt2);
-            }
-            else {
-                if(alt1.attr("id") == "voltage")
-                    multiply(x, z, alt1);
-                else if(id == "voltage")
-                    divide(x, z, alt1);
-                else
-                    divide(z, x, alt1);
-            }
-
-            changeStack.push(id);
-        }
-
-        $("#voltage").on('change keydown paste input', function(){
-            evaluate($("#voltage"), $("#amperage"), $("#resistance"))
-        });
-        
-        $("#amperage").on('change keydown paste input', function(){
-            evaluate($("#amperage"), $("#voltage"), $("#resistance"))
-        });
-        
-        $("#resistance").on('change keydown paste input', function(){
-            evaluate($("#resistance"), $("#voltage"), $("#amperage"))
-        });
-        
-        $("#voltage").val(null);
-        $("#amperage").val(null);
-        $("#resistance").val(null);
       </script>
     </body>
   </html>
