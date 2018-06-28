@@ -93,6 +93,11 @@ function evaluate(){
         string += " " + getTempCoeffString(tempCoeff);
 
     $("#resistorValueText")[0].innerHTML = string;
+
+    if(solved){
+        solved = false;
+        $('#solver-tolerance-notice')[0].classList.add("d-none");
+    }
 }
 
 
@@ -326,6 +331,9 @@ function selectOption(optionName, color){
     input.attr("checked", "");
 }
 
+
+var solved = false;
+
 if(window.location.search.indexOf("solve") > 0){
     var value = window.location.search.split("=")[1];
     
@@ -363,6 +371,8 @@ if(window.location.search.indexOf("solve") > 0){
 
         selectColor();
         evaluate();
-    }
 
+        $('#solver-tolerance-notice')[0].classList.remove("d-none");
+        solved = true;
+    }
 }
