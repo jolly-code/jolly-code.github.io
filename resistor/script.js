@@ -16,6 +16,8 @@ function getValueFromColor(color){
 
 function getMultiplierFromColor(color){
     switch(color){
+        case "silver": return Math.pow(10, -2);
+        case "gold": return Math.pow(10,-1);
         case "black": return Math.pow(10, 0);
         case "brown": return Math.pow(10, 1);
         case "red": return Math.pow(10, 2);
@@ -26,22 +28,20 @@ function getMultiplierFromColor(color){
         case "violet": return Math.pow(10, 7);
         case "grey": return Math.pow(10, 8);
         case "white": return Math.pow(10, 9);
-        case "gold": return Math.pow(10,-1);
-        case "silver": return Math.pow(10, -2);
         default: return 0;
     }
 }
 
 function getToleranceFromColor(color){
     switch(color){
+        case "silver": return .10;
+        case "gold": return .05;
         case "brown": return .01;
         case "red": return .02;
         case "green": return .005;
         case "blue": return .0025;
         case "violet": return .001;
         case "grey": return .0005;
-        case "gold": return .05;
-        case "silver": return .10;
         default: return .20;
     }
 }
@@ -51,9 +51,9 @@ function getTempCoeffFromColor(color){
         case "black": return 250;
         case "brown": return 100;
         case "red": return 50;
-        case "orange": return 15;
         case "yellow": return 25;
         case "green": return 20;
+        case "orange": return 15;
         case "blue": return 10;
         case "violet": return 5;
         case "grey": return 1;
@@ -364,5 +364,5 @@ if(window.location.search.indexOf("solve") > 0){
         selectColor();
         evaluate();
     }
-    
+
 }
