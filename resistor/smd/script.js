@@ -163,4 +163,9 @@ $('button').click(function() {
     }
 
     $("#resistorValueText")[0].innerHTML = getValueString(value) + tolerance;
+    
+    if(value == null)
+        $("#solve-link").attr("href", "#");
+    else
+        $("#solve-link").attr("href", "../?solve=" + value);
 });
