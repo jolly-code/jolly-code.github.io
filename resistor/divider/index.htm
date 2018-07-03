@@ -1,0 +1,57 @@
+<!doctype html>
+  <html lang="en">
+    <head>
+        <!--#include file="/resistor/head.shtml" -->
+    </head>
+    <body>
+        <!--#include file="/resistor/header.shtml" -->
+
+        <div class="container">
+            <div class="text-center my-4">
+                <h1 class="text-muted" >V<sub>out</sub> = V<sub>in</sub> × R<sub>2</sub> / (R<sub>1</sub> + R<sub>2</sub>)</h1>
+            </div>
+
+            <div class="text-center my-5">
+                <img class="img-fluid" src="/resistor/Images/resistive_divider2.svg" alt="Vin --- R1 --- Vout --- R2 --- Gnd"/>
+            </div>
+
+            <form>
+                <div class="form-group row mb-4">
+                    <label class="col-6 col-form-label text-right" for="voltage-in">Voltage input (V<sub>in</sub>)</label>
+                    <input type="number" step="any" min="0" class="form-control text-right col-4" id="voltage-in" aria-describedby="voltage" placeholder="">
+                    <label class="col col-form-label">V</label>
+                </div>
+                <div class="form-group row mb-3">
+                    <label class="col-6 col-form-label text-right" for="resistance-1">Resistance 1 (R<sub>1</sub>)</label>
+                    <div class="col-4 p-0 text-right m-0">
+                        <input type="number" step="any" min="0" class="form-control text-right" id="resistance-1" aria-describedby="resistance" placeholder="">
+                        <a id="solve-link-1" href="#">Solve resistor</a>
+                    </div>
+                    <label class="col col-form-label">Ω</label>
+                </div>
+                <div class="form-group row mb-3">
+                    <label class="col-6 col-form-label text-right" for="resistance-2">Resistance 2 (R<sub>2</sub>)</label>
+                    <div class="col-4 p-0 text-right">
+                        <input type="number" step="any" min="0" class="form-control text-right" id="resistance-2" aria-describedby="resistance" placeholder="">
+                        <a id="solve-link-2" href="#">Solve resistor</a>
+                    </div>
+                    <label class="col col-form-label">Ω</label>
+                </div>
+                <div class="form-group row mb-3">
+                    <label class="col-6 col-form-label text-right" for="voltage-out">Voltage output (V<sub>out</sub>)</label>
+                    <input type="number" step="any" min="0" class="form-control text-right col-4" id="voltage-out" aria-describedby="voltage" placeholder="">
+                    <label class="col col-form-label">V</label>
+                </div>
+            </form>
+        </div>
+
+        <!--#include file="/bottomjs.shtml" -->
+
+        <script src="../shared.js"></script>
+        <script src="script.js"></script>
+
+        <script type="text/javascript">
+        $("#dividerTab").addClass("active");
+        </script>
+    </body>
+  </html>

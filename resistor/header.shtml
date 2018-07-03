@@ -21,7 +21,10 @@
                     <a class="nav-link" href="/resistor/smd/">SMD</a>
                 </li>
                 <li class="nav-item" id="ohmsTab">
-                    <a class="nav-link" href="/resistor/ohms.htm">Ohm's Law</a>
+                    <a class="nav-link" href="/resistor/ohms.htm">Ohm's law</a>
+                </li>
+                <li class="nav-item" id="dividerTab">
+                    <a class="nav-link" href="/resistor/divider/">Voltage divider</a>
                 </li>
                 <li class="nav-item" id="aboutTab">
                     <a class="nav-link" href="/resistor/about.htm">About</a>
