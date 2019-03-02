@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Paintings</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
+        <link rel="stylesheet" href="grid-gallery.css">
+    </head>
+    <body>
+        <section class="gallery-block grid-gallery">
+            <div class="container">
+                <div class="heading">
+                    <h2>Paintings</h2>
+                    Acrylic on paper and canvas, 2018
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-lg-4 item">
+                        <a class="lightbox" href="paintings/lakebloom.jpg">
+                            <img class="img-fluid image scale-on-hover" src="paintings/lakebloom.jpg">
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4 item">
+                        <a class="lightbox" href="paintings/fields.jpg">
+                            <img class="img-fluid image scale-on-hover" src="paintings/fields.jpg">
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4 item">
+                        <a class="lightbox" href="paintings/pressgarden.jpg">
+                            <img class="img-fluid image scale-on-hover" src="paintings/pressgarden.jpg">
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4 item">
+                        <a class="lightbox" href="paintings/flowers.jpg">
+                            <img class="img-fluid image scale-on-hover" src="paintings/flowers.jpg">
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4 item">
+                        <a class="lightbox" href="paintings/shapla.jpg">
+                            <img class="img-fluid image scale-on-hover" src="paintings/shapla.jpg">
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-4 item">
+                        <a class="lightbox" href="paintings/dawn.jpg">
+                            <img class="img-fluid image scale-on-hover" src="paintings/dawn.jpg">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+        <script>
+            baguetteBox.run('.grid-gallery', { animation: 'slideIn'});
+        </script>
+    </body>
+</html>
