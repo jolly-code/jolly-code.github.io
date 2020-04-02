@@ -345,7 +345,7 @@ if(window.location.search.indexOf("solve") > 0){
             multiplier--;
         }
     
-        for(var i = 0; value > 100; i++){
+        for(var i = 0; value >= 100; i++){
             value /= 10;
             multiplier++;
         }
