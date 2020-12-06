@@ -1,9 +1,14 @@
+---
+# Ugh
+---
 <!doctype html>
   <html lang="en">
     <head>
+        {% include resister/head.shtml %}
         <!--#include file="/resistor/head.shtml" -->
     </head>
     <body>
+        {% include resister/header.shtml %}
         <!--#include file="/resistor/header.shtml" -->
 
         <div class="container">
@@ -45,6 +50,7 @@
             </form>
         </div>
 
+        {% include bottomjs.shtml %}
         <!--#include file="/bottomjs.shtml" -->
 
         <script src="../shared.js"></script>

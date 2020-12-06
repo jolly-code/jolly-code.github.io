@@ -1,11 +1,16 @@
+---
+# Ugh
+---
 <!doctype html>
   <html lang="en">
     <head>
+      {% include resister/head.shtml %}
         <!--#include file="../head.shtml" -->
 
         <link href="style.css" rel="stylesheet"></link>
     </head>
     <body>
+      {% include resister/header.shtml %}
 <!--#include file="../header.shtml" -->
 
       <div id="mainContainer" class="container">
@@ -114,6 +119,7 @@
           </div>
       </div>
 
+      {% include bottomjs.shtml %}
       <!--#include file="/bottomjs.shtml" -->
 
       <script src="../shared.js"></script>
