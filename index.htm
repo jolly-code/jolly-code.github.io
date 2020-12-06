@@ -18,8 +18,8 @@
     <link href="styles.css" rel="stylesheet"/>
   </head>
   <body>
-    {% include header.shtml %}
     <!--#include file="header.shtml" -->
+    <div id="header"></div><script type="text/javascript">$('#header').load('header.shtml');</script>
 
     <div class="position-relative overflow-hidden p-3 p-md-5 text-center bg-light ludo-bg box-shadow">
       <div class="product-device box-shadow d-none d-md-block">
