@@ -1,6 +1,10 @@
+---
+# Ugh
+---
 <!doctype html>
   <html lang="en">
     <head>
+      {% include head.shtml %}
         <!--#include file="head.shtml" -->
 
         <style>
@@ -16,6 +20,7 @@
         </style>
     </head>
     <body>
+      {% include header.shtml %}
       <!--#include virtual="/resistor/header.shtml" -->
 
       <div class="container">
@@ -84,6 +89,7 @@
         </div>
       </div>
 
+      {% include /bottomjs.shtml %}
       <!--#include file="/bottomjs.shtml" -->
       
       <script src="shared.js"></script>
