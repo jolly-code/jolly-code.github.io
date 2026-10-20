@@ -1,0 +1,17 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>THE HELIOS FRONT — WIP build</title>
+<style>
+  html,body{margin:0;height:100%;background:#000;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:8px;font:11px ui-monospace,monospace;color:#2de1c2;
+    overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;
+    -webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
+  body.stretch canvas{box-shadow:none}
+  body.stretch .cap{display:none}
+  canvas{image-rendering:pixelated;image-rendering:crisp-edges;box-shadow:0 0 0 1px #1e6b5e;
+    display:block}
+  .cap{opacity:.6;letter-spacing:.1em;text-align:center;line-height:1.7;padding:0 8px}
+</style>
+<canvas id=c width=1280 height=960 tabindex=0></canvas>
+<div class=cap id=cap></div>
+<script src="game.js?v=235873fb59"></script>
